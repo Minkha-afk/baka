@@ -79,4 +79,42 @@
   60% { transform: translate(2px, 2px); }
   80% { transform: translate(2px, -2px); }
   100% { transform: translate(0); }
+}
+@media (max-width: 768px) {
+  .header {
+    padding: 40px 0 30px;
+    margin-bottom: 20px;
+  }
+  .name {
+    font-size: 2.2rem;
+  }
+  .title {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+  .contactInfo {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .contactItem {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 0 10px;
+    margin-bottom: 10px;
+  }
+  .name {
+    font-size: 1.3rem;
+  }
+  .title {
+    font-size: 0.9rem;
+  }
+  .contactItem {
+    padding: 7px 8px;
+    font-size: 0.85rem;
+  }
 } 

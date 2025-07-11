@@ -43,4 +43,32 @@
   max-width: 800px;
   margin: 0 auto;
   color: #e0e0e0;
+}
+@media (max-width: 768px) {
+  .section {
+    padding: 24px 8px;
+    margin-bottom: 30px;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .aboutText {
+    font-size: 1rem;
+    max-width: 98vw;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: 12px 2px;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .aboutText {
+    font-size: 0.92rem;
+    max-width: 99vw;
+  }
 } 

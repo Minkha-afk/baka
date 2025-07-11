@@ -86,4 +86,43 @@
 .skillCard p {
   color: #b0b0b0;
   font-size: 0.95rem;
+}
+@media (max-width: 768px) {
+  .section {
+    padding: 24px 8px;
+    margin-bottom: 30px;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .skillsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .skillCard {
+    padding: 18px;
+    font-size: 0.98rem;
+  }
+  .skillIcon {
+    font-size: 2.1rem;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: 12px 2px;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .skillCard {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  .skillIcon {
+    font-size: 1.3rem;
+  }
 } 

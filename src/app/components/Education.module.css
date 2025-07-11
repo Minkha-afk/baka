@@ -69,4 +69,42 @@
 }
 .educationCard strong {
   color: #e0e0e0;
+}
+@media (max-width: 768px) {
+  .section {
+    padding: 24px 8px;
+    margin-bottom: 30px;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .educationGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .educationCard {
+    padding: 18px;
+    font-size: 0.98rem;
+  }
+  .educationCard h3 {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: 12px 2px;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .educationCard {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  .educationCard h3 {
+    font-size: 0.95rem;
+  }
 } 

@@ -71,4 +71,50 @@
 .experienceItem p {
   color: #e0e0e0;
   line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .section {
+    padding: 24px 8px;
+    margin-bottom: 30px;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .experienceItem {
+    padding: 16px;
+    font-size: 0.98rem;
+  }
+  .experienceTitle {
+    font-size: 1.1rem;
+  }
+  .experienceCompany {
+    font-size: 1rem;
+  }
+  .experienceDate {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: 12px 2px;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .experienceItem {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  .experienceTitle {
+    font-size: 0.95rem;
+  }
+  .experienceCompany {
+    font-size: 0.9rem;
+  }
+  .experienceDate {
+    font-size: 0.85rem;
+  }
 } 
