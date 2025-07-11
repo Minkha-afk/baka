@@ -6,9 +6,16 @@ const ThreeBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    let scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, particles: THREE.Points;
-    let mouseX = 0, mouseY = 0;
+    let particles: THREE.Points;
     let animationId: number;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current!,
+      alpha: true,
+      antialias: true,
+    });
+    let mouseX = 0, mouseY = 0;
 
     function createParticles() {
       const particleCount = 150;
@@ -70,14 +77,6 @@ const ThreeBackground = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    // Setup
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current!,
-      alpha: true,
-      antialias: true,
-    });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     createParticles();
