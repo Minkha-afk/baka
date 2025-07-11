@@ -1,0 +1,82 @@
+.header {
+  text-align: center;
+  padding: 100px 0 80px;
+  background: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: slideDown 1s ease-out;
+}
+@keyframes slideDown {
+  from { transform: translateY(-100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #00f5ff, #ff00ff, #00ff41, #ff0080);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: neonGradient 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.5));
+}
+@keyframes neonGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #00f5ff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: fadeInUp 1s ease-out 0.5s both;
+  filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3));
+}
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.contactInfo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 1s both;
+}
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.contactItem:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 245, 255, 0.2);
+  background: rgba(0, 245, 255, 0.1);
+  border-color: #00f5ff;
+}
+.name:hover {
+  animation: glitch 0.5s ease-in-out;
+}
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+} 
