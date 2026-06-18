@@ -1,5 +1,6 @@
 import { Icon } from "./Icons";
 import Reveal from "./Reveal";
+import SparkleButton from "./SparkleButton";
 import { profile, stats } from "../lib/data";
 
 export default function Hero() {
@@ -8,152 +9,160 @@ export default function Hero() {
       id="top"
       className="relative mx-auto w-full max-w-6xl px-5 sm:px-8 pt-32 pb-16 sm:pt-40 sm:pb-24"
     >
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
-        {/* LEFT COLUMN */}
-        <div>
-          {profile.available && (
-            <Reveal delay={0}>
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5">
+      <div className="grid lg:grid-cols-12 gap-10 items-center">
+        {/* LEFT */}
+        <div className="lg:col-span-7">
+          {profile.available ? (
+            <Reveal>
+              <span className="inline-flex items-center gap-2.5 rounded-full bg-bg raise-sm px-3.5 py-1.5 font-mono text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-accent">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
                 </span>
-                <span className="font-mono text-xs text-accent">
-                  Open to opportunities
-                </span>
+                Open to opportunities
               </span>
             </Reveal>
-          )}
+          ) : null}
 
           <Reveal delay={90}>
-            <h1 className="mt-6 text-4xl sm:text-6xl font-semibold leading-[1.05]">
-              Minhazul Islam{" "}
-              <span className="grad-text">Choudhury</span>
+            <h1 className="mt-6 text-4xl sm:text-6xl font-semibold leading-[1.05] text-fg">
+              {profile.firstName}{" "}
+              <span className="grad-text">
+                {profile.name.slice(profile.firstName.length).trim()}
+              </span>
             </h1>
           </Reveal>
 
-          <Reveal delay={180}>
-            <p className="mt-5 font-mono text-accent">
+          <Reveal delay={150}>
+            <p className="mt-4 font-mono text-accent text-base sm:text-lg">
               <span className="text-faint">$ </span>
               {profile.role}
             </p>
           </Reveal>
 
-          <Reveal delay={270}>
-            <p className="mt-4 text-lg text-fg">{profile.tagline}</p>
-            <p className="mt-3 max-w-xl text-muted">
-              DevOps-focused full-stack engineer skilled in automating
-              multi-server deployments, CI/CD pull-and-deploy pipelines, and
-              containerization with Docker, Compose &amp; Swarm. I administer
-              Linux VPS fleets and GCP, configure Nginx reverse proxies, and
-              orchestrate processes with PM2 and systemd.
+          <Reveal delay={210}>
+            <p className="mt-6 text-fg text-lg">{profile.tagline}</p>
+            <p className="mt-3 text-muted max-w-xl">
+              {profile.summary.split(".")[0]}.
             </p>
           </Reveal>
 
-          <Reveal delay={360}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a href="#work" className="btn-primary cursor-pointer">
+          <Reveal delay={270}>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href="#work" className="btn-primary">
                 View my work
                 <Icon name="arrowRight" size={18} />
               </a>
-              <a
+              <SparkleButton
                 href={profile.resumeUrl}
+                label="Résumé"
                 download
-                className="btn-ghost cursor-pointer"
-              >
-                Résumé
-                <Icon name="download" size={18} />
-              </a>
+              />
             </div>
           </Reveal>
 
-          <Reveal delay={450}>
-            <div className="mt-7 flex items-center gap-3">
+          <Reveal delay={330}>
+            <div className="mt-8 flex items-center gap-3">
               <a
                 href={profile.github}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer noopener"
                 aria-label="GitHub profile"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white/5 text-muted transition-colors duration-200 hover:text-accent hover:border-border-strong cursor-pointer"
+                className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-bg raise-sm text-muted transition hover:inset-sm hover:text-accent"
               >
-                <Icon name="github" size={18} />
+                <Icon name="github" size={19} />
               </a>
               <a
                 href={profile.linkedin}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer noopener"
                 aria-label="LinkedIn profile"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white/5 text-muted transition-colors duration-200 hover:text-accent hover:border-border-strong cursor-pointer"
+                className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-bg raise-sm text-muted transition hover:inset-sm hover:text-accent"
               >
-                <Icon name="linkedin" size={18} />
+                <Icon name="linkedin" size={19} />
               </a>
               <a
                 href={`mailto:${profile.email}`}
                 aria-label="Send an email"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white/5 text-muted transition-colors duration-200 hover:text-accent hover:border-border-strong cursor-pointer"
+                className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-bg raise-sm text-muted transition hover:inset-sm hover:text-accent"
               >
-                <Icon name="mail" size={18} />
+                <Icon name="mail" size={19} />
               </a>
             </div>
           </Reveal>
         </div>
 
-        {/* RIGHT COLUMN — terminal / deploy log */}
-        <Reveal delay={180} className="relative">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-accent/10 blur-3xl"
-          />
-          <div className="card overflow-hidden">
-            {/* top bar */}
-            <div className="flex items-center border-b border-white/10 px-4 py-3">
-              <div className="flex items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <span className="h-3 w-3 rounded-full bg-accent" />
+        {/* RIGHT — neumorphic CI/CD console */}
+        <div className="lg:col-span-5">
+          <Reveal delay={240}>
+            <div className="card-inset overflow-hidden rounded-2xl">
+              {/* Top strip */}
+              <div className="flex items-center px-5 pt-4 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-bg inset-sm text-accent" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-bg inset-sm text-cyan" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-bg inset-sm text-faint" />
+                </div>
+                <span className="flex-1 text-center font-mono text-xs text-faint">
+                  deploy.sh
+                </span>
+                <span className="w-[46px]" aria-hidden="true" />
               </div>
-              <span className="flex-1 text-center font-mono text-xs text-faint">
-                deploy.sh
-              </span>
-              <span className="w-[54px]" />
-            </div>
 
-            {/* body */}
-            <div className="p-5 font-mono text-[13px] leading-relaxed">
-              <p className="text-fg">$ git push origin main</p>
-              <p className="text-muted">
-                → webhook received · pulling on 5 VPS
-              </p>
-              <p className="text-accent">✓ docker compose build</p>
-              <p className="text-accent">✓ swarm rolling update (multi-node)</p>
-              <p className="text-cyan">✓ nginx reverse proxy · reload</p>
-              <p className="text-accent">✓ pm2 zero-downtime restart</p>
-              <p className="text-muted">→ health checks passing on all nodes</p>
-              <p className="mt-2 text-fg font-semibold">
-                deployed in 14s — 0 downtime
-                <span className="ml-1 animate-blink text-accent">▋</span>
-              </p>
+              <div className="px-5">
+                <div className="divider" />
+              </div>
+
+              {/* Body */}
+              <div className="font-mono text-[13px] leading-relaxed p-5">
+                <p className="text-fg">$ git push origin main</p>
+                <p className="text-muted">
+                  <span className="text-muted">&#45;&gt;</span> webhook received - pulling on 5 VPS
+                </p>
+                <p className="mt-1 text-fg">
+                  <span className="text-accent">ok</span> docker compose build
+                </p>
+                <p className="text-fg">
+                  <span className="text-accent">ok</span> swarm rolling update (multi-node)
+                </p>
+                <p className="text-cyan">
+                  <span className="text-accent">ok</span> nginx reverse proxy - reload
+                </p>
+                <p className="text-fg">
+                  <span className="text-accent">ok</span> pm2 zero-downtime restart
+                </p>
+                <p className="mt-2 font-semibold text-fg">
+                  deployed in 14s - 0 downtime
+                  <span className="ml-0.5 animate-blink text-accent">&#9612;</span>
+                </p>
+              </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
 
-      {/* STATS STRIP */}
-      <Reveal delay={270}>
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className="card p-4">
-              <Icon
-                name={stat.icon}
-                size={22}
-                className={i % 2 === 0 ? "text-accent" : "text-cyan"}
-              />
-              <div className="mt-3 font-display text-2xl">{stat.value}</div>
-              <div className="text-sm text-muted">{stat.label}</div>
+      {/* STATS strip */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-14">
+        {stats.map((stat, i) => (
+          <Reveal
+            key={stat.label}
+            delay={360 + i * 80}
+            className={i % 2 === 1 ? "sm:translate-y-3" : ""}
+          >
+            <div className="card p-4">
+              <span
+                className={`inline-flex h-10 w-10 items-center justify-center rounded-xl bg-bg inset-sm ${
+                  i % 2 === 0 ? "text-accent" : "text-cyan"
+                }`}
+              >
+                <Icon name={stat.icon} size={20} />
+              </span>
+              <p className="mt-3 font-display text-2xl text-fg">{stat.value}</p>
+              <p className="text-muted text-sm">{stat.label}</p>
             </div>
-          ))}
-        </div>
-      </Reveal>
+          </Reveal>
+        ))}
+      </div>
     </header>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Icon } from "./Icons";
+import SparkleButton from "./SparkleButton";
 import { navLinks, profile } from "../lib/data";
 
 export default function Navbar() {
@@ -18,31 +19,25 @@ export default function Navbar() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <nav
-      aria-label="Primary"
-      className="fixed inset-x-0 top-4 z-50"
-    >
+    <header className="fixed inset-x-0 top-4 z-50">
       <div className="mx-auto max-w-5xl px-4">
-        {/* Floating glass pill */}
-        <div
-          className={[
-            "flex items-center justify-between gap-4 rounded-full px-3 py-2 backdrop-blur-xl transition-all duration-300 sm:px-4",
-            scrolled
-              ? "border border-white/15 bg-surface/80 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.85)]"
-              : "border border-white/10 bg-surface/50",
-          ].join(" ")}
+        <nav
+          aria-label="Primary"
+          className={`flex items-center justify-between gap-3 rounded-full bg-bg px-3 py-2 transition-shadow duration-300 sm:px-4 ${
+            scrolled ? "raise-lg" : "raise"
+          }`}
         >
-          {/* Left — logo / monogram */}
+          {/* Left — monogram + wordmark */}
           <a
             href="#top"
             aria-label="Home"
-            className="group flex items-center gap-2.5 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer"
           >
-            <span className="grid size-9 place-items-center rounded-xl border border-accent/30 bg-accent/15 font-mono text-[0.7rem] font-semibold tracking-tight text-accent transition-colors duration-200 group-hover:border-accent/50">
+            <span className="grid h-[38px] w-[38px] place-items-center rounded-2xl bg-bg inset-sm font-mono text-[0.72rem] font-bold tracking-tight text-accent">
               MIC
             </span>
-            <span className="font-mono text-sm font-medium text-fg">
-              minhazul<span className="text-faint">.dev</span>
+            <span className="hidden font-mono text-sm font-semibold text-fg sm:inline">
+              Minkha<span className="text-faint">.dev</span>
             </span>
           </a>
 
@@ -52,7 +47,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="cursor-pointer rounded-full px-3 py-2 font-mono text-sm text-muted transition-colors duration-200 hover:text-fg"
+                  className="rounded-full px-3 py-2 font-mono text-sm text-muted transition-colors duration-200 hover:text-accent cursor-pointer"
                 >
                   {link.label}
                 </a>
@@ -61,33 +56,31 @@ export default function Navbar() {
           </ul>
 
           {/* Right — desktop socials + résumé */}
-          <div className="hidden items-center gap-1.5 lg:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <a
               href={profile.github}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               aria-label="GitHub profile"
-              className="grid size-9 cursor-pointer place-items-center rounded-full text-muted transition-colors duration-200 hover:bg-white/5 hover:text-fg"
+              className="grid h-[38px] w-[38px] place-items-center rounded-full bg-bg raise-sm text-muted transition-all duration-200 hover:text-accent hover:inset-sm cursor-pointer"
             >
               <Icon name="github" size={18} />
             </a>
             <a
               href={profile.linkedin}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               aria-label="LinkedIn profile"
-              className="grid size-9 cursor-pointer place-items-center rounded-full text-muted transition-colors duration-200 hover:bg-white/5 hover:text-fg"
+              className="grid h-[38px] w-[38px] place-items-center rounded-full bg-bg raise-sm text-muted transition-all duration-200 hover:text-accent hover:inset-sm cursor-pointer"
             >
               <Icon name="linkedin" size={18} />
             </a>
-            <a
+            <SparkleButton
               href={profile.resumeUrl}
+              label="Résumé"
               download
-              className="btn-primary ml-1.5 !px-4 !py-2 !text-sm"
-            >
-              <Icon name="download" size={16} />
-              Résumé
-            </a>
+              size="compact"
+            />
           </div>
 
           {/* Mobile — hamburger */}
@@ -96,11 +89,11 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="grid size-10 cursor-pointer place-items-center rounded-full border border-white/10 text-fg transition-colors duration-200 hover:bg-white/5 lg:hidden"
+            className="grid h-[42px] w-[42px] place-items-center rounded-2xl bg-bg raise-sm text-fg transition-all duration-200 hover:text-accent lg:hidden cursor-pointer"
           >
             <Icon name={open ? "x" : "menu"} size={20} />
           </button>
-        </div>
+        </nav>
 
         {/* Mobile — dropdown panel */}
         {open && (
@@ -111,7 +104,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={closeMenu}
-                    className="flex min-h-[44px] cursor-pointer items-center rounded-xl px-4 font-mono text-base text-muted transition-colors duration-200 hover:bg-white/5 hover:text-fg"
+                    className="flex min-h-[44px] items-center rounded-2xl px-3 font-mono text-base text-muted transition-colors duration-200 hover:text-accent cursor-pointer"
                   >
                     {link.label}
                   </a>
@@ -121,42 +114,39 @@ export default function Navbar() {
 
             <div className="divider my-3" />
 
-            <div className="flex items-center justify-between gap-3 px-1">
-              <div className="flex items-center gap-2">
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub profile"
-                  onClick={closeMenu}
-                  className="grid size-11 cursor-pointer place-items-center rounded-xl border border-white/10 text-muted transition-colors duration-200 hover:bg-white/5 hover:text-fg"
-                >
-                  <Icon name="github" size={18} />
-                </a>
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn profile"
-                  onClick={closeMenu}
-                  className="grid size-11 cursor-pointer place-items-center rounded-xl border border-white/10 text-muted transition-colors duration-200 hover:bg-white/5 hover:text-fg"
-                >
-                  <Icon name="linkedin" size={18} />
-                </a>
-              </div>
+            <div className="flex items-center gap-2">
               <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub profile"
+                onClick={closeMenu}
+                className="grid h-[42px] w-[42px] place-items-center rounded-full bg-bg raise-sm text-muted transition-all duration-200 hover:text-accent hover:inset-sm cursor-pointer"
+              >
+                <Icon name="github" size={18} />
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn profile"
+                onClick={closeMenu}
+                className="grid h-[42px] w-[42px] place-items-center rounded-full bg-bg raise-sm text-muted transition-all duration-200 hover:text-accent hover:inset-sm cursor-pointer"
+              >
+                <Icon name="linkedin" size={18} />
+              </a>
+              <SparkleButton
                 href={profile.resumeUrl}
+                label="Résumé"
                 download
                 onClick={closeMenu}
-                className="btn-primary flex-1 !py-2.5 !text-sm"
-              >
-                <Icon name="download" size={16} />
-                Résumé
-              </a>
+                className="ml-auto"
+                size="compact"
+              />
             </div>
           </div>
         )}
       </div>
-    </nav>
+    </header>
   );
 }

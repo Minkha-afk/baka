@@ -16,11 +16,11 @@ export const profile = {
   phone: "+91 84532 44745",
   phoneHref: "+918453244745",
   // TODO: replace with real profile URLs
-  github: "https://github.com/minhazul-islam",
-  linkedin: "https://www.linkedin.com/in/minhazul-islam-choudhury",
-  resumeUrl: "/Minhazul_Islam_Choudhury_Resume.pdf",
+  github: "https://github.com/minkha-afk",
+  linkedin: "https://www.linkedin.com/in/minhazul-i-choudhury-a64073326/",
+  resumeUrl: "/Minhazul_Islam_Choudhury_Resume_1Page.pdf",
   summary:
-    "DevOps-focused full-stack engineer skilled in automating multi-server deployments, building CI/CD pull-and-deploy pipelines, and containerizing applications with Docker, Docker Compose, and Docker Swarm. I administer Linux VPS fleets and GCP environments, configure Nginx reverse proxies, and orchestrate processes with PM2 and systemd — backed by hands-on backend (Node.js, Express, GraphQL) and frontend (React, Next.js) engineering.",
+    "DevOps-focused full-stack engineer specializing in automated multi-server deployments, CI/CD pull-and-deploy pipelines, and containerized microservices with Docker, Docker Compose, and Docker Swarm. I administer Linux VPS fleets and GCP environments, configure Nginx reverse proxies and load balancing, and orchestrate zero-downtime releases with PM2 and systemd — pairing strong infrastructure work with production full-stack delivery across Node.js, Express, GraphQL, React, and Next.js.",
   available: true,
 };
 
@@ -28,9 +28,9 @@ export type Stat = { value: string; label: string; icon: IconName };
 
 export const stats: Stat[] = [
   { value: "5", label: "Production VPS automated", icon: "server" },
-  { value: "Zero-touch", label: "Deployments on every push", icon: "workflow" },
-  { value: "Multi-node", label: "Docker Swarm orchestration", icon: "container" },
-  { value: "2", label: "Engineering internships", icon: "briefcase" },
+  { value: "Zero-touch", label: "Deploys on every push", icon: "workflow" },
+  { value: "3", label: "Full-stack apps shipped", icon: "rocket" },
+  { value: "Multi-node", label: "Docker Swarm clusters", icon: "container" },
 ];
 
 export type SkillGroup = {
@@ -53,11 +53,12 @@ export const skillGroups: SkillGroup[] = [
       "Docker",
       "Docker Compose",
       "Docker Swarm",
-      "CI/CD Pipelines",
       "Nginx (Reverse Proxy & LB)",
+      "Multi-Stage Builds",
       "PM2",
       "systemd",
-      "VPS Administration",
+      "Health Checks",
+      "Load Testing (Artillery)",
       "Linux",
       "Bash Scripting",
     ],
@@ -70,9 +71,11 @@ export const skillGroups: SkillGroup[] = [
     blurb: "Provision and deploy cloud-hosted services with automated workflows.",
     items: [
       "Google Cloud Platform",
+      "Vercel",
+      "Render",
       "Contabo VPS",
+      "MongoDB Atlas",
       "Pull-and-Deploy Automation",
-      "Containerized Deployments",
     ],
   },
   {
@@ -80,8 +83,16 @@ export const skillGroups: SkillGroup[] = [
     icon: "server",
     accent: "accent",
     span: "normal",
-    blurb: "Scalable APIs and server-side logic.",
-    items: ["Node.js", "Express.js", "GraphQL", "REST APIs"],
+    blurb: "Scalable APIs, microservices, and server-side logic.",
+    items: [
+      "Node.js",
+      "Express.js",
+      "GraphQL",
+      "REST APIs",
+      "Microservices",
+      "JWT & RBAC",
+      "Socket.IO",
+    ],
   },
   {
     title: "Frontend",
@@ -89,7 +100,15 @@ export const skillGroups: SkillGroup[] = [
     accent: "violet",
     span: "normal",
     blurb: "Fast, animated, responsive interfaces.",
-    items: ["React.js", "Next.js", "JavaScript", "GSAP", "Framer Motion"],
+    items: [
+      "React.js",
+      "Next.js (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "GSAP",
+      "Framer Motion",
+    ],
   },
   {
     title: "Databases",
@@ -97,7 +116,7 @@ export const skillGroups: SkillGroup[] = [
     accent: "cyan",
     span: "normal",
     blurb: "Relational and document data.",
-    items: ["MongoDB", "PostgreSQL"],
+    items: ["MongoDB", "Mongoose", "MongoDB Atlas", "PostgreSQL"],
   },
   {
     title: "Version Control & Practices",
@@ -107,9 +126,10 @@ export const skillGroups: SkillGroup[] = [
     blurb: "Disciplined, test-driven delivery.",
     items: [
       "Git & GitHub",
+      "GitLab",
       "Branch & PR Workflows",
+      "Monorepo Management",
       "Test-Driven Development",
-      "Project Management",
       "Critical Thinking",
     ],
   },
@@ -137,10 +157,11 @@ export const experiences: Experience[] = [
       "Built and maintained CI/CD pipelines that automated pull-and-deploy workflows across 5 production VPS instances (Contabo), enabling consistent, zero-touch deployments on every code push.",
       "Containerized and orchestrated services with Docker, Docker Compose, and Docker Swarm, supporting multi-node scaling and reliable rollouts across the cluster.",
       "Configured Nginx as a reverse proxy to route and load-balance traffic across multiple application instances.",
+      "Load-tested the cluster with Artillery — simulating thousands of concurrent users and sustained traffic spikes — to validate Nginx load balancing, capacity limits, and zero-downtime rollouts; profiled the results to remove bottlenecks and keep p95 latency stable under peak load.",
       "Managed application processes and zero-downtime restarts using PM2 and systemd across all server environments.",
       "Spearheaded full-stack development of a scalable social-media platform, building GraphQL APIs with Node.js/Express and dynamic React.js/Next.js frontends.",
     ],
-    stack: ["Docker Swarm", "CI/CD", "Nginx", "PM2", "Node.js", "GraphQL", "Next.js"],
+    stack: ["Docker Swarm", "CI/CD", "Nginx", "Artillery", "PM2", "Node.js", "GraphQL", "Next.js"],
   },
   {
     role: "Software Developer Intern",
@@ -163,7 +184,7 @@ export const experiences: Experience[] = [
 export type Project = {
   name: string;
   tag: string;
-  org: string;
+  url: string; // live demo
   icon: IconName;
   accent: "accent" | "cyan" | "violet";
   description: string;
@@ -174,52 +195,80 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "Zero-Touch CI/CD Pipeline",
-    tag: "Infrastructure",
-    org: "VrixaaLabs",
-    icon: "workflow",
+    name: "MedClarity",
+    tag: "AI · Healthcare",
+    url: "https://pyro-six.vercel.app",
+    icon: "sparkles",
     accent: "accent",
     featured: true,
     description:
-      "An automated pull-and-deploy system delivering zero-touch releases across a 5-node production VPS fleet on every code push.",
+      "An AI healthcare platform that turns medical PDFs and images into safe, patient-friendly explanations — with multilingual voice, a Telegram bot client, and auto-generated medication reminders.",
     highlights: [
-      "5 production VPS, one git push to ship",
-      "Nginx reverse proxy + load balancing",
-      "Zero-downtime restarts via PM2 & systemd",
+      "Google Gemini Vision reads medical PDFs/images into safe, non-diagnostic summaries",
+      "Multilingual voice across 10 Indian languages (Edge TTS + ElevenLabs)",
+      "Prescription parser → structured JSON + .ics email reminders via Nodemailer",
+      "Telegram bot client reusing one shared Next.js API layer across web & chat",
     ],
-    stack: ["Docker Swarm", "Nginx", "Bash", "PM2", "systemd", "Contabo"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Gemini Vision",
+      "ElevenLabs",
+      "Edge TTS",
+      "Telegram API",
+      "Vercel",
+    ],
   },
   {
-    name: "Scalable Social Platform",
-    tag: "Full-Stack",
-    org: "VrixaaLabs",
-    icon: "layers",
+    name: "Elevana",
+    tag: "Microservices · EdTech",
+    url: "https://elevana-rosy.vercel.app",
+    icon: "container",
     accent: "cyan",
     featured: true,
     description:
-      "A social-media application with a robust GraphQL backend and dynamic, animated React/Next.js frontends — containerized and orchestrated for multi-node scaling.",
+      "A full-stack e-learning platform built as four Dockerized microservices (auth, catalog, learning, chat) over a shared MongoDB Atlas database, with real-time classrooms and a teacher studio.",
     highlights: [
-      "GraphQL APIs on Node.js / Express",
-      "Dynamic React.js & Next.js frontends",
-      "Containerized for multi-node scaling",
+      "4-service microservices architecture on a shared, domain-scoped MongoDB Atlas",
+      "Multi-stage Docker builds deployed across Vercel, Render & Atlas with health checks",
+      "JWT auth + RBAC, ownership checks, and server-side quiz grading",
+      "Real-time Socket.IO chat (presence, typing, enrollment-gated channels)",
     ],
-    stack: ["GraphQL", "Node.js", "Express", "Next.js", "MongoDB", "Docker"],
+    stack: [
+      "Next.js 15",
+      "TypeScript",
+      "Express",
+      "MongoDB Atlas",
+      "Socket.IO",
+      "JWT",
+      "Docker",
+      "shadcn/ui",
+    ],
   },
   {
-    name: "QA Testing Platform",
-    tag: "Product",
-    org: "Aortem.io",
-    icon: "terminal",
+    name: "AdAlign",
+    tag: "AI · Marketing",
+    url: "https://ad-align.vercel.app",
+    icon: "zap",
     accent: "violet",
     featured: false,
     description:
-      "A sophisticated QA testing application with a built-in, fully functional in-app code editor for real-time test execution and GitHub-synced repositories.",
+      "An AI dashboard that analyzes ad creatives and generates personalized landing pages aligned to each ad's headline, CTA, tone, audience, and brand — through a multi-step Next.js generation pipeline.",
     highlights: [
-      "In-app code editor, real-time execution",
-      "Dart SDK cross-platform integration",
-      "Secure GitHub repo sync & management",
+      "Generates landing pages aligned to an ad's headline, CTA, tone & brand",
+      "Multi-step Next.js API pipeline: analyze → extract → generate → validate",
+      "Hardened with API-key validation, model fallback, retry & rate-limit handling",
+      "Multimodal AI via OpenRouter from uploaded ad images or image URLs",
     ],
-    stack: ["GCP", "Dart SDK", "GitHub API", "CI/CD"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "OpenRouter",
+      "Gemini",
+      "REST API",
+    ],
   },
 ];
 

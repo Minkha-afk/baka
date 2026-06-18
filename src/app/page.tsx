@@ -9,12 +9,7 @@ import Closing from "./components/Closing";
 export default function Home() {
   return (
     <>
-      {/* Ambient background */}
-      <div className="page-aurora" aria-hidden="true" />
-      <div className="page-grid" aria-hidden="true" />
-
       <Navbar />
-
       <main id="main">
         <Hero />
         <About />
