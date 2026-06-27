@@ -18,7 +18,7 @@ export const profile = {
   // TODO: replace with real profile URLs
   github: "https://github.com/minkha-afk",
   linkedin: "https://www.linkedin.com/in/minhazul-i-choudhury-a64073326/",
-  resumeUrl: "/Minhazul_Islam_Choudhury_Resume_1Page.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1NSXX-i8YLmofEvzmIMe2UKM45UYVTpn2/view?usp=sharing",
   summary:
     "DevOps-focused full-stack engineer specializing in automated multi-server deployments, CI/CD pull-and-deploy pipelines, and containerized microservices with Docker, Docker Compose, and Docker Swarm. I administer Linux VPS fleets and GCP environments, configure Nginx reverse proxies and load balancing, and orchestrate zero-downtime releases with PM2 and systemd — pairing strong infrastructure work with production full-stack delivery across Node.js, Express, GraphQL, React, and Next.js.",
   available: true,
